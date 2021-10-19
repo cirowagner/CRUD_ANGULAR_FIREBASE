@@ -1,0 +1,63 @@
+<div class="card border-success mb-3">
+    <div class="card-header d-flex align-items-center justify-content-between">
+        <h4 class="m-0">Agregar Producto</h4>
+        <div *ngIf="loading" class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <div class="card-body">
+        <form #productosForm="ngForm" (ngSubmit)="onSubmit(productosForm)">
+            <input type="hidden" name="key" #key="ngModel" [(ngModel)]="catalogoService.selectProducto.key">
+            <div class="form-group">
+                <label>Nombre Producto</label>
+                <input 
+                    required
+                    type="text"
+                    class="form-control"
+                    placeholder="Agregar producto"
+                    name="nombre"
+                    [(ngModel)]="catalogoService.selectProducto.nombre"
+                >
+            </div>
+            <div class="form-group">
+                <label>Precio</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Precio"
+                    name="precio" 
+                    [(ngModel)]="catalogoService.selectProducto.precio"
+                >
+            </div>
+            <div class="form-group">
+                <label>Cantidad</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Cantidad"
+                    name="cantidad" 
+                    [(ngModel)]="catalogoService.selectProducto.cantidad"
+                >
+            </div>
+            <div class="form-group">
+            <label>Categoria</label>
+            <select 
+                class="form-control" 
+                id="exampleSelect1"
+                name="categoria" 
+                [(ngModel)]="catalogoService.selectProducto.categoria"
+            >
+                <option value="TECLADO">TECLADOS</option>
+                <option value="MOUSES">MOUSES</option>
+                <option value="LAPTOPS">LAPTOPS</option>
+                <option value="IMPRESORAS">IMPRESORAS</option>
+                <option value="VARIOS">VARIOS</option>
+            </select>
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" class="form-control btn btn-primary">
+                <input type="reset" class="form-control btn btn-secondary mt-3" (click)="resetForm(productosForm)">
+            </div>
+          </form>
+    </div>
+  </div>
